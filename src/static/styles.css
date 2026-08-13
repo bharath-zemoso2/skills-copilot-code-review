@@ -50,6 +50,89 @@ body {
   font-size: 0.9rem;
 }
 
+/* Announcement Banner Styles */
+.announcement-banner {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.announcement-banner.hidden {
+  display: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.announcement-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.announcement-text {
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.close-banner-btn {
+  background: none;
+  border: none;
+  color: var(--primary-text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.close-banner-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.close-banner-btn:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 600px) {
+  .announcement-banner {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .close-banner-btn {
+    align-self: flex-end;
+    margin-left: 0;
+  }
+
+  .announcement-text {
+    font-size: 0.85rem;
+  }
+}
+
 header {
   text-align: center;
   padding: 12px 0;

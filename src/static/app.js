@@ -1,4 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Announcement Banner
+  const announcementBanner = document.getElementById("announcement-banner");
+  const closeBannerBtn = document.getElementById("close-banner-btn");
+  const announcementText = document.getElementById("announcement-text");
+
+  // Close banner functionality
+  if (closeBannerBtn) {
+    closeBannerBtn.addEventListener("click", () => {
+      announcementBanner.classList.add("hidden");
+      // Store preference in localStorage so it stays closed until next session/time period
+      localStorage.setItem("announcement-dismissed", new Date().toISOString());
+    });
+  }
+
+  // Check if banner was recently dismissed
+  const dismissedTime = localStorage.getItem("announcement-dismissed");
+  if (dismissedTime) {
+    const dismissDate = new Date(dismissedTime);
+    const now = new Date();
+    // Reset banner daily (after 24 hours)
+    const hoursDiff = (now - dismissDate) / (1000 * 60 * 60);
+    if (hoursDiff < 24) {
+      announcementBanner.classList.add("hidden");
+    } else {
+      localStorage.removeItem("announcement-dismissed");
+    }
+  }
+
   // DOM elements
   const activitiesList = document.getElementById("activities-list");
   const messageDiv = document.getElementById("message");
